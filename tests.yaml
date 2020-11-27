@@ -1,0 +1,239 @@
+---
+- name: valid - header without scope
+  message: |
+    type: description
+  expected:
+    breaking: false
+    type: type
+    description: description
+
+
+- name: valid - header with breaking change and no scope
+  message: |
+    type!: description
+  expected:
+    breaking: true
+    type: type
+    description: description
+
+
+- name: valid - header with scope
+  message: |
+    type(scope): description
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+
+
+- name: valid - header only with breaking change and scope
+  message: |
+    type(scope)!: description
+  expected:
+    breaking: true
+    scope: scope
+    type: type
+    description: description
+
+
+- name: valid - header and body
+  message: |
+    type(scope): description
+
+    body body
+
+    asdf body
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+    body: |-
+      body body
+
+      asdf body
+
+
+- name: valid - header and :<space> footer
+  message: |
+    type(scope): description
+
+    footer: value
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+    footer:
+      - token: footer
+        value: value
+
+
+- name: valid - header and <space># footer
+  message: |
+    type(scope): description
+
+    refs #value
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+    footer:
+      - token: refs
+        value: '#value'
+
+
+- name: valid - header and multiple footers
+  message: |
+    type(scope): description
+
+    footer1: value1
+    footer2: value2
+    refs #1234
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+    footer:
+      - token: footer1
+        value: value1
+      - token: footer2
+        value: value2
+      - token: refs
+        value: '#1234'
+
+
+- name: valid - header and BREAKING CHANGE footer
+  message: |
+    type(scope): description
+
+    BREAKING CHANGE: break
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+    footer:
+      - token: BREAKING CHANGE
+        value: break
+
+
+- name: valid - header and BREAKING-CHANGE footer
+  message: |
+    type(scope): description
+
+    BREAKING-CHANGE: break
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+    footer:
+      - token: BREAKING-CHANGE
+        value: break
+
+
+- name: valid - header and multiline footers
+  message: |
+    type(scope): description
+
+    BREAKING-CHANGE: this breaks
+    and is multi line
+
+    footer: value
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+    footer:
+      - token: BREAKING-CHANGE
+        value: |-
+          this breaks
+          and is multi line
+      - token: footer
+        value: value
+
+- name: valid - header, body and multiline footers
+  message: |
+    type(scope): description
+
+    this is a multiline
+
+    body
+
+    BREAKING-CHANGE: this breaks
+    and is multi line
+
+    footer: value
+  expected:
+    breaking: false
+    scope: scope
+    type: type
+    description: description
+    body: |-
+      this is a multiline
+
+      body
+    footer:
+      - token: BREAKING-CHANGE
+        value: |-
+          this breaks
+          and is multi line
+      - token: footer
+        value: value
+
+- name: invalid - not a letter in type
+  message: |
+    ty pe: description
+  expected:
+    mustFail: true
+
+
+- name: invalid - missing scope delimiter in header
+  message: |
+    type(scope: description
+  expected:
+    mustFail: true
+
+
+- name: invalid - missing colon in header
+  message: |
+    type description
+  expected:
+    mustFail: true
+
+
+- name: invalid - wrong position of breaking change '!'
+  message: |
+    type!(scope): description
+  expected:
+    mustFail: true
+
+
+- name: invalid - no empty line between header and footer
+  message: |
+    type(scope): description
+    footer: value
+  expected:
+    mustFail: true
+
+- name: invalid - no empty line between header and body
+  message: |
+    type(scope): description
+    body text
+  expected:
+    mustFail: true
+
+
+- name: invalid - no empty line between body and footer
+  message: |
+    type(scope): description
+
+    body text
+    footer: value
+  expected:
+    mustFail: true
