@@ -1,4 +1,29 @@
 ---
+- name: valid - example from web page
+  message: |
+    fix: correct minor typos in code
+
+    see the issue for details
+
+    on typos fixed.
+
+    Reviewed-by: Z
+    Refs #133
+  expected:
+    breaking: false
+    type: fix
+    description: correct minor typos in code
+    body: |-
+      see the issue for details
+
+      on typos fixed.
+    footer:
+      - token: Reviewed-by
+        value: Z
+      - token: Refs
+        value: '#133'
+
+
 - name: valid - header without scope
   message: |
     type: description
