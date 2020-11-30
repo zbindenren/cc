@@ -6,3 +6,39 @@
 # cc
 A small go library to parse [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/). Instead of regular expressions,
 this package uses a lexer, that functions similarly to Rob Pike's discussion about lexer design in this [talk](https://www.youtube.com/watch?v=HxaD_trXwRE).
+
+This library, creates whit a commit of the form:
+
+```
+fix: correct minor typos in code
+
+see the issue for details
+
+on typos fixed.
+
+Reviewed-by: Z
+Refs #133
+```
+
+a struct like following:
+
+```go
+&cc.Commit{
+  Header: cc.Header{
+    Type: "fix",
+    Scope: "",
+    Description: "correct minor typos in code",
+  },
+  Body: "see the issue for details\n\non typos fixed.",
+  Footer: cc.Footers{
+    cc.Footer{
+      Token: "Reviewed-by",
+      Value: "Z",
+    },
+    cc.Footer{
+      Token: "Refs",
+      Value: "#133",
+    },
+  },
+}
+```
