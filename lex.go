@@ -1,20 +1,3 @@
-// Package cc parses conventional commits: https://www.conventionalcommits.org/en/v1.0.0
-//
-// A commit is of the form:
-//	   <type>[optional scope]: <description>
-//
-//	   [optional body]
-//
-//	   [optional footer(s)]
-//
-// Example:
-//	   fix(cluster): connection resets
-//
-//	   here an additional body can be added.
-//	   the body can be multiline.
-//
-//	   Acknowledged-by: a user
-//	   Fixes #123 bug
 package cc
 
 import (
