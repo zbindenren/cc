@@ -7,7 +7,7 @@
 A small go library to parse [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/). Instead of regular expressions,
 this package uses a lexer, that functions similarly to Rob Pike's discussion about lexer design in this [talk](https://www.youtube.com/watch?v=HxaD_trXwRE).
 
-This library, creates whit a commit of the form:
+This library, parses a commit of the form:
 
 ```
 fix: correct minor typos in code
@@ -20,7 +20,7 @@ Reviewed-by: Z
 Refs #133
 ```
 
-a struct like following:
+into a struct:
 
 ```go
 &cc.Commit{
