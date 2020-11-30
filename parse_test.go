@@ -1,6 +1,8 @@
 package cc
 
 import (
+	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"testing"
 
@@ -129,4 +131,39 @@ func TestBreakingMessage(t *testing.T) {
 
 		assert.Equal(t, tc.expectedMessage, tc.commit.BreakingMessage())
 	}
+}
+
+func ExampleParse() {
+	msg := `fix(compiler): correct minor typos in code
+
+see the issue for details
+
+on typos fixed.
+
+Reviewed-by: Z
+Refs #133`
+
+	c, _ := Parse(msg)
+	d, _ := json.MarshalIndent(c, "", "  ")
+
+	fmt.Println(string(d))
+	// Output:
+	// {
+	//   "Header": {
+	//     "Type": "fix",
+	//     "Scope": "compiler",
+	//     "Description": "correct minor typos in code"
+	//   },
+	//   "Body": "see the issue for details\n\non typos fixed.",
+	//   "Footer": [
+	//     {
+	//       "Token": "Reviewed-by",
+	//       "Value": "Z"
+	//     },
+	//     {
+	//       "Token": "Refs",
+	//       "Value": "#133"
+	//     }
+	//   ]
+	// }
 }
