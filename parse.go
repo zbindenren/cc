@@ -38,7 +38,7 @@ type Header struct {
 	Description string
 }
 
-// Footer is the footer (traile) part of the conventional commit.
+// Footer is the footer (trailer) part of the conventional commit.
 type Footer struct {
 	Token string `yaml:"token"`
 	Value string `yaml:"value"`
@@ -47,7 +47,8 @@ type Footer struct {
 // Footers is a slice of Footer.
 type Footers []Footer
 
-// BreakingMessage returns the breaking message text.
+// BreakingMessage returns the breaking message text. If no breaking change is
+// detected an empty string is returned.
 func (c Commit) BreakingMessage() string {
 	b := c.Footer.breakingMessage()
 	if b == "" && c.isBreaking {
@@ -57,7 +58,7 @@ func (c Commit) BreakingMessage() string {
 	return b
 }
 
-// Parse parses the conventional commit. If it fails an error is returned.
+// Parse parses the conventional commit. If it fails, an error is returned.
 func Parse(s string) (*Commit, error) {
 	l := lexer.New(strings.TrimSpace(s), typeState)
 	l.ErrorHandler = func(string) {}
