@@ -1,7 +1,6 @@
 package cc
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/bbuck/go-lexer"
@@ -57,7 +56,6 @@ func TestTakeUntilFirstFooter(t *testing.T) {
 		t.Run(tc.data, func(t *testing.T) {
 			l := lexer.New(tc.data, nil)
 			found := takeUntilFirstFooterToken(l)
-			fmt.Printf("%q\n", l.Current())
 			assert.Equal(t, tc.expectedFound, found)
 			assert.Equal(t, tc.expectedCurrent, l.Current())
 		})
