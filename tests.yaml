@@ -262,3 +262,23 @@
     footer: value
   expected:
     mustFail: true
+
+
+- name: invalid - no colon and scope
+  message: |
+    type
+  expected:
+    mustFail: true
+
+
+- name: invalid - empty scope
+  message: |
+    type(): description
+  expected:
+    mustFail: true
+
+- name: invalid - no description
+  message: |
+    type(parser):
+  expected:
+    mustFail: true

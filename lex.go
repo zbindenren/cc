@@ -30,6 +30,12 @@ func typeState(l *lexer.L) lexer.StateFunc {
 	for {
 		r := l.Peek()
 
+		if r == lexer.EOFRune {
+			l.Error("missing scope or description")
+
+			return nil
+		}
+
 		if r == ':' {
 			l.Emit(headerType)
 
@@ -64,6 +70,12 @@ func scopeState(l *lexer.L) lexer.StateFunc {
 	for {
 		r := l.Peek()
 		if r == ')' {
+			if l.Current() == "" {
+				l.Error("empty scope")
+
+				return nil
+			}
+
 			l.Emit(headerScope)
 			l.Take(")")
 			l.Emit(rightScopeDelimiter)

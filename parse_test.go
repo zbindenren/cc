@@ -43,7 +43,7 @@ func TestParse(t *testing.T) {
 
 			if tc.Expected.Fail {
 				// nolint: gocritic
-				// fmt.Println(err) // nolint: gocritic
+				// fmt.Println(err)
 				require.Error(t, err)
 				return
 			}
