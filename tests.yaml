@@ -44,10 +44,10 @@
 
 - name: valid - header with scope
   message: |
-    type(scope): description
+    type(scope-1): description
   expected:
     breaking: false
-    scope: scope
+    scope: scope-1
     type: type
     description: description
 

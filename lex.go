@@ -83,8 +83,8 @@ func scopeState(l *lexer.L) lexer.StateFunc {
 			return descriptionDelimiterState
 		}
 
-		if !unicode.IsLetter(r) {
-			l.Error("scope must be in () and can contain only letters")
+		if !(unicode.IsLetter(r) || unicode.IsDigit(r) || r == '-' || r == '_') {
+			l.Error("scope must be noun in ()")
 
 			return nil
 		}
