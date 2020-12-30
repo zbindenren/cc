@@ -1,5 +1,5 @@
-github.com/bbuck/go-lexer v0.0.0-20150530081543-8752f4c00663 h1:vfwE2ry+LIoUoe6/7WxdCxkNk+bf/NtyPJF5toJESCY=
-github.com/bbuck/go-lexer v0.0.0-20150530081543-8752f4c00663/go.mod h1:0Zcx5s69hSpLEBzpZo1AVBcSnxNYrTG4ijLK29AbTu0=
+github.com/bbuck/go-lexer v1.0.0 h1:ZwzxWHnxQslJ/5I01nlhZwE7MtmvXbtEyRwrgQ70Qew=
+github.com/bbuck/go-lexer v1.0.0/go.mod h1:JOt4Q0nNqWxYEy+spld4SJGe9r8G8suXd1dukur9O90=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -15,3 +15,5 @@ gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gopkg.in/yaml.v3 v3.0.0-20200605160147-a5ece683394c h1:grhR+C34yXImVGp7EzNk+DTIk+323eIUWOmEevy6bDo=
 gopkg.in/yaml.v3 v3.0.0-20200605160147-a5ece683394c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 h1:tQIYjPdBoyREyB9XMu+nnTclpTYkz2zFM+lzLJFO4gQ=
+gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
