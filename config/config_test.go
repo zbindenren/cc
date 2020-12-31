@@ -9,7 +9,7 @@ import (
 	"github.com/tj/assert"
 )
 
-func TestWriteLoadConfig(t *testing.T) {
+func TestWriteLoad(t *testing.T) {
 	tmpDir, err := ioutil.TempDir("", "writeloadtest")
 	require.NoError(t, err)
 
