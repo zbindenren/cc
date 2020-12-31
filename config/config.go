@@ -4,6 +4,7 @@ package config
 import (
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -98,9 +99,28 @@ func Load(dir string) (*Changelog, error) {
 		return nil, ErrNotFound
 	}
 
-	b, err := ioutil.ReadFile(configPath) // nolint: gosec
+	r, err := os.Open(configPath) // nolint: gosec
 	if err != nil {
-		return nil, fmt.Errorf("failed to read %s: %w", configPath, err)
+		return nil, fmt.Errorf("open to read %s: %w", configPath, err)
+	}
+
+	c, err := Read(r)
+	if err != nil {
+		return nil, fmt.Errorf("failed to load config from %s: %w", configPath, err)
+	}
+
+	if len(c.Sections) == 0 {
+		return nil, ErrEmpty
+	}
+
+	return c, nil
+}
+
+// Read unmarshals config.Changelog from a io.Reader.
+func Read(r io.Reader) (*Changelog, error) {
+	b, err := ioutil.ReadAll(r) // nolint: gosec
+	if err != nil {
+		return nil, err
 	}
 
 	c := Changelog{
@@ -108,11 +128,7 @@ func Load(dir string) (*Changelog, error) {
 	}
 
 	if err := yaml.Unmarshal(b, &c); err != nil {
-		return nil, fmt.Errorf("failed to parse %s: %w", configPath, err)
-	}
-
-	if len(c.Sections) == 0 {
-		return nil, ErrEmpty
+		return nil, fmt.Errorf("failed to unmarshal yaml: %w", err)
 	}
 
 	return &c, nil
