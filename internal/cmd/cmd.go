@@ -178,7 +178,12 @@ func (c Command) title(g *git.Command, tag string) (string, error) {
 		return "", err
 	}
 
-	return fmt.Sprintf("%s (%s)", tag, date), nil
+	version, err := semver.NewVersion(tag)
+	if err != nil {
+		return "", err
+	}
+
+	return fmt.Sprintf("%s (%s)", version, date), nil
 }
 
 func (c Command) confirmVersion(version semver.Version, in io.Reader, out io.Writer) (*semver.Version, error) {
