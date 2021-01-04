@@ -27,7 +27,7 @@ func (c Command) runRelease(dst io.Writer, l *flash.Logger, cfg config.Changelog
 	}
 
 	if uncommmited {
-		return errors.New("git repository contains ucommitted changes")
+		return errors.New("git repository contains uncommitted changes")
 	}
 
 	var next semver.Version
