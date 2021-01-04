@@ -54,6 +54,7 @@ Closes: #12345`)
   * **00000008**:
     add a breaking change (#12345)
     > this is the body of the breaking change
+    > breaks all
   * **00000007**:
     breaking change again
 

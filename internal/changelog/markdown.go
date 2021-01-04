@@ -79,9 +79,18 @@ func (c *Commit) writeBreaking(w io.Writer) {
 		s.WriteString(")")
 	}
 
-	if c.Body != "" {
+	breakingMsg := c.BreakingMessage()
+
+	if c.Body != "" || breakingMsg != "" {
 		s.WriteString(nl)
+	}
+
+	if c.Body != "" {
 		s.WriteString(blockQuote(0, c.Body))
+	}
+
+	if breakingMsg != c.Header.Description {
+		s.WriteString(blockQuote(0, breakingMsg))
 	}
 
 	l := listItem(2, s.String())
