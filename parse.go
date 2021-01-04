@@ -48,9 +48,8 @@ type Footer struct {
 type Footers []Footer
 
 // BreakingMessage returns the breaking change message text. If the breaking change
-// is indicated with `!` only, the description is returned. If a `BREAKING CHANGE`
-// or `BREAKING_CHANGE` footer token is detected, the corresponding footer value
-// is returned.
+// is indicated with a `BREAKING CHANGE` or `BREAKING_CHANGE` footer token, then this
+// value is returned. Otherwise the header description is returned.
 //
 // If no breaking change is detected an empty string is returned.
 func (c Commit) BreakingMessage() string {
