@@ -88,6 +88,14 @@ func (c Command) runRelease(dst io.Writer, l *flash.Logger, cfg config.Changelog
 			return err
 		}
 
+		if !g.IsStaged(*c.file) {
+			l.Debug("staging changelog", "file", *c.file)
+
+			if err := g.StageFile(*c.file); err != nil {
+				return err
+			}
+		}
+
 		l.Debug("committing changes")
 
 		if err := g.CommitFile(*c.file, fmt.Sprintf("chore: update changelog with %s release", version.String())); err != nil {

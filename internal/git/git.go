@@ -96,6 +96,12 @@ func (c Command) HasRemotes() bool {
 	return err == nil
 }
 
+// IsStaged checks if a path is staged in repository.
+func (c Command) IsStaged(path string) bool {
+	_, err := c.Run("ls-files", "--error-unmatch", path)
+	return err == nil
+}
+
 // RevList runs git rev-list start..end
 func (c Command) RevList(start, end string) ([]string, error) {
 	arg := end
