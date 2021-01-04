@@ -13,7 +13,6 @@ const (
 	tabStop    = "  "
 	boldPrefix = "**"
 	bullet     = '*'
-	nl         = '\n'
 
 	githubURL        = "https://github.com"
 	githubCommitPath = "/commit"
@@ -23,9 +22,10 @@ const (
 func (s typeSection) write(w io.Writer) {
 	var sb strings.Builder
 
-	sb.WriteString("\n\n")
+	sb.WriteString(nl)
+	sb.WriteString(nl)
 	sb.WriteString(heading(3, s.name))
-	sb.WriteRune(nl)
+	sb.WriteString(nl)
 
 	w.Write([]byte(sb.String()))
 
@@ -70,7 +70,7 @@ func (c *Commit) writeBreaking(w io.Writer) {
 
 	s.WriteString(bold(c.revisionURL))
 	s.WriteRune(':')
-	s.WriteRune(nl)
+	s.WriteString(nl)
 	s.WriteString(c.Header.Description)
 
 	if c.issueURL != "" {
@@ -80,7 +80,7 @@ func (c *Commit) writeBreaking(w io.Writer) {
 	}
 
 	if c.Body != "" {
-		s.WriteRune(nl)
+		s.WriteString(nl)
 		s.WriteString(blockQuote(0, c.Body))
 	}
 
@@ -104,7 +104,7 @@ func (c *Commit) writeStandard(w io.Writer) {
 	s.WriteString(")")
 
 	if c.Body != "" {
-		s.WriteRune(nl)
+		s.WriteString(nl)
 		s.WriteString(blockQuote(0, c.Body))
 	}
 
@@ -166,7 +166,7 @@ func heading(level int, title string) string {
 	s.WriteString(strings.Repeat("#", level))
 	s.WriteRune(' ')
 	s.WriteString(title)
-	s.WriteRune('\n')
+	s.WriteString(nl)
 
 	return s.String()
 }
@@ -188,7 +188,7 @@ func listItem(level int, data string) string {
 		}
 
 		s.WriteString(scanner.Text())
-		s.WriteRune(nl)
+		s.WriteString(nl)
 		count++
 	}
 
@@ -215,7 +215,7 @@ func blockQuote(indent int, data string) string {
 		s.WriteString(ident)
 		s.WriteString("> ")
 		s.WriteString(scanner.Text())
-		s.WriteRune(nl)
+		s.WriteString(nl)
 	}
 
 	return s.String()

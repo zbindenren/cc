@@ -2,6 +2,8 @@ package changelog
 
 import (
 	"bytes"
+	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -74,6 +76,11 @@ Closes: #12345`)
 
 	b := bytes.NewBufferString("")
 	c.Write("title", b)
+
+	if runtime.GOOS == "windows" {
+		expected = strings.ReplaceAll(expected, "\n", "\r\n")
+	}
+
 	assert.Equal(t, expected, b.String())
 }
 

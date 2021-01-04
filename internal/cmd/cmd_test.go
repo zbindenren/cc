@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 	"time"
 
@@ -17,6 +18,7 @@ import (
 
 const (
 	logOutput = false
+	windowsOS = "windows"
 )
 
 func TestInit(t *testing.T) {
@@ -48,6 +50,11 @@ func TestInit(t *testing.T) {
 
 `
 	expected := fmt.Sprintf(expectedFmt, time.Now().Format(dateFormat))
+
+	// '\n' vs '\r\n'
+	if runtime.GOOS == windowsOS {
+		expected = strings.ReplaceAll(expected, "\n", "\r\n")
+	}
 
 	assert.Equal(t, expected, string(b))
 }
@@ -95,6 +102,11 @@ func TestRelease(t *testing.T) {
 
 `
 	expected := fmt.Sprintf(expectedFmt, time.Now().Format(dateFormat))
+
+	// '\n' vs '\r\n'
+	if runtime.GOOS == windowsOS {
+		expected = strings.ReplaceAll(expected, "\n", "\r\n")
+	}
 
 	assert.Equal(t, expected, string(b))
 }

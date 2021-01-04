@@ -128,7 +128,7 @@ func (c *Changelog) Write(title string, w io.Writer) {
 		s.write(w)
 	}
 
-	w.Write([]byte("\n\n\n"))
+	w.Write([]byte(nl + nl + nl))
 }
 
 // ReleaseType determines how the version for the next release
