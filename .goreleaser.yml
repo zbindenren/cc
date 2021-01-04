@@ -1,6 +1,8 @@
 project_name: cc
 release:
-    disable: true
+  github:
+    owner: zbindenren
+    name: cc
 builds:
     - id: changelog
       goos:
