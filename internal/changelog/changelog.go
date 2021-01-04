@@ -27,11 +27,10 @@ const (
 
 // Changelog creates a changelog.
 type Changelog struct {
-	githubProjectPath string
-	typeSections      typeSections
-	cfg               config.Changelog
-	releaseType       ReleaseType
-	logFunc           func(msg string, keysAndValues ...interface{})
+	typeSections typeSections
+	cfg          config.Changelog
+	releaseType  ReleaseType
+	logFunc      func(msg string, keysAndValues ...interface{})
 }
 
 // New creates a new Changelog.

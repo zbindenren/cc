@@ -12,20 +12,6 @@ type Option func(*Changelog) error
 // LogFunc is a logging function.
 type LogFunc func(msg string, keysAndValues ...interface{})
 
-// WithGithubProjectPath configures the project path for github. This determines how links to issues and
-// commits are created.
-func WithGithubProjectPath(projectPath string) Option {
-	return func(c *Changelog) error {
-		if projectPath == "" {
-			return errors.New("project path is empty")
-		}
-
-		c.githubProjectPath = projectPath
-
-		return nil
-	}
-}
-
 // WithConfig configures how header types are mapped to headings and which
 // sections are hidden.
 func WithConfig(cfg config.Changelog) Option {

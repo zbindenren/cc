@@ -26,8 +26,8 @@ var (
 
 // Changelog configures the changelog.
 type Changelog struct {
-	Sections []Section `yaml:"sections"`
-	Flavor   string    `yaml:"flavor"`
+	Sections          []Section `yaml:"sections"`
+	GithubProjectPath string    `yaml:"github_project_path"`
 }
 
 // Section is a section config.
@@ -84,10 +84,6 @@ func (c Changelog) Validate() error {
 		}
 	}
 
-	if !(c.Flavor == "gitlab" || c.Flavor == "github") {
-		return errors.New("flavor has to be either 'gitlab' or github")
-	}
-
 	return nil
 }
 
@@ -123,9 +119,7 @@ func Read(r io.Reader) (*Changelog, error) {
 		return nil, err
 	}
 
-	c := Changelog{
-		Flavor: "gitlab",
-	}
+	c := Changelog{}
 
 	if err := yaml.Unmarshal(b, &c); err != nil {
 		return nil, fmt.Errorf("failed to unmarshal yaml: %w", err)
@@ -152,7 +146,6 @@ func Write(dir string, c Changelog) error {
 
 // Default represents the default configuration.
 var Default = Changelog{
-	Flavor: "gitlab",
 	Sections: []Section{
 		{
 			Type:   "build",

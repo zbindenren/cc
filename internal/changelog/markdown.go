@@ -114,7 +114,7 @@ func (c *Commit) writeStandard(w io.Writer) {
 
 func (c Changelog) issueURL(issueNumber int) string {
 	// gitlab renders link automatically for revisions
-	if c.githubProjectPath == "" {
+	if c.cfg.GithubProjectPath == "" {
 		return fmt.Sprintf("#%d", issueNumber)
 	}
 
@@ -123,7 +123,7 @@ func (c Changelog) issueURL(issueNumber int) string {
 		issuesPath = githubIssuesPath
 	)
 
-	url := path.Join(githubURL, c.githubProjectPath, issuesPath) + "/"
+	url := path.Join(githubURL, c.cfg.GithubProjectPath, issuesPath) + "/"
 	issue := fmt.Sprintf("#%d", issueNumber)
 
 	s.WriteRune('[')
@@ -138,7 +138,7 @@ func (c Changelog) issueURL(issueNumber int) string {
 }
 func (c Changelog) revisionURL(revision string) string {
 	// gitlab renders link automatically for revisions
-	if c.githubProjectPath == "" {
+	if c.cfg.GithubProjectPath == "" {
 		return revision
 	}
 
@@ -147,7 +147,7 @@ func (c Changelog) revisionURL(revision string) string {
 		commitPath = githubCommitPath
 	)
 
-	url := path.Join(githubURL, c.githubProjectPath, commitPath) + "/"
+	url := path.Join(githubURL, c.cfg.GithubProjectPath, commitPath) + "/"
 
 	s.WriteRune('[')
 	s.WriteString(revision[:8])
