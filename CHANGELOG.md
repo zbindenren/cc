@@ -1,3 +1,16 @@
+## 0.2.1 (2021-01-04)
+
+
+### Bug Fixes
+
+* **changelog**: add `BREAKING CHANGE` footer token value to changelog ([2e070cd5](https:/github.com/zbindenren/cc/commit/2e070cd57387b57b5c98656801d2e5595d7834fd))
+  > Before this change, footer token values for `BREAKING CHANGE` and
+  > `BREAKING_CHANGE` were ignored.
+* **changelog**: version is no longer prefixed with `v` for `-history` flag ([4a8804f1](https:/github.com/zbindenren/cc/commit/4a8804f18ea7560fe45fecaa052605b1a8a66fe8))
+* **common**: documentation for BreakingMessage() method. ([9cd0522e](https:/github.com/zbindenren/cc/commit/9cd0522e7067d9145a84db05dc9346602c396208))
+
+
+
 ## 0.2.0 (2021-01-04)
 
 
