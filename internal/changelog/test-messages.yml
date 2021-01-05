@@ -1,0 +1,36 @@
+---
+- commit: '00000001'
+  message: |
+    fix: a fix
+
+    this is the body
+- commit: '00000002'
+  message: |
+    fix: fixed this
+- commit: '00000003'
+  message: |
+    fix(router): another fix
+
+    Closes: #1
+- commit: '00000004'
+  message: |
+    feat: a feature
+- commit: '00000005'
+  message: |
+    chore(common): changed this
+
+    Closes: #123`)
+- commit: '00000006'
+  message: |
+    chore!: breaking change
+- commit: '00000007'
+  message: |
+    chore(router)!: breaking change again
+- commit: '00000008'
+  message: |
+    feat(router): add a breaking change
+
+    this is the body of the breaking change
+
+    BREAKING CHANGE: breaks all
+    Closes: #12345
