@@ -28,6 +28,7 @@ const (
 	sinceTagOptName       = "since"
 	initDfltConfigOptName = "init-config"
 	noPromptOptName       = "n"
+	versionOptName        = "v"
 
 	dfltChangelogFile = "CHANGELOG.md"
 	dateFormat        = "2006-01-02"
@@ -37,6 +38,7 @@ const (
 type Command struct {
 	noop bool // for tests
 	fs   *flag.FlagSet
+	b    BuildInfo
 	// flags
 	file       *string
 	debug      *bool
@@ -46,14 +48,16 @@ type Command struct {
 	sinceTag   *string
 	initConfig *bool
 	noPrompt   *bool
+	version    *bool
 }
 
 // New creates a new Command.
-func New() *Command {
+func New(b BuildInfo) *Command {
 	fs := flag.NewFlagSet("changelog", flag.ExitOnError)
 
 	return &Command{
 		fs:         fs,
+		b:          b,
 		file:       fs.String(fileOptName, dfltChangelogFile, "changelog file name"),
 		debug:      fs.Bool(debugOptName, false, "log debug information"),
 		toStdOut:   fs.Bool(stdOutOptName, false, "output changelog to stdout instead to file"),
@@ -62,6 +66,7 @@ func New() *Command {
 		sinceTag:   fs.String(sinceTagOptName, "", fmt.Sprintf("in combination with -%s: if a tag is specified, the changelog will be created from that tag on", historyOptName)),
 		initConfig: fs.Bool(initDfltConfigOptName, false, fmt.Sprintf("initialize a default changelog configuration '%s'", config.FileName)),
 		noPrompt:   fs.Bool(noPromptOptName, false, "do not prompt for next version"),
+		version:    fs.Bool(versionOptName, false, "show program version information"),
 	}
 }
 
@@ -72,6 +77,11 @@ func (c Command) Run() error {
 		if err := c.fs.Parse(os.Args[1:]); err != nil {
 			return err
 		}
+	}
+
+	if *c.version {
+		fmt.Println(c.b.Version("changelog"))
+		return nil
 	}
 
 	// history is always written to stdout
