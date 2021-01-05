@@ -69,8 +69,8 @@ func (c Command) runRelease(dst io.Writer, l *flash.Logger, cfg config.Changelog
 		return err
 	}
 
-	if version.Equal(current) {
-		return fmt.Errorf("version %s already exists", version)
+	if !version.GreaterThan(current) {
+		return fmt.Errorf("version must be greater than current version %s", current)
 	}
 
 	title := fmt.Sprintf("%s (%s)", version, time.Now().Format(dateFormat))
