@@ -1,3 +1,20 @@
+## 0.3.0 (2021-01-05)
+
+
+### Bug Fixes
+
+* **changelog**: github issue and commit markdown URLs ([cdeb3531](https://github.com/zbindenren/cc/commit/cdeb3531))
+* **changelog**: stage buildinfo go files ([e6f7a8c6](https://github.com/zbindenren/cc/commit/e6f7a8c6))
+* **changelog**: verify that new version is greater than current ([85b778f4](https://github.com/zbindenren/cc/commit/85b778f4))
+* **changelog**: when overriding release version corresponding tag is also overridden ([62c99ab1](https://github.com/zbindenren/cc/commit/62c99ab1))
+
+
+### New Features
+
+* **changelog**: add version flag `-v` to show version information ([4b5090c2](https://github.com/zbindenren/cc/commit/4b5090c2))
+
+
+
 ## 0.2.1 (2021-01-04)
 
 
