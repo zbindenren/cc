@@ -104,7 +104,7 @@ func (c Command) runRelease(dst io.Writer, l *flash.Logger, cfg config.Changelog
 
 		l.Debugw("create release tag", "release", "v"+version.String())
 
-		if err := g.CreateRelease(next.String()); err != nil {
+		if err := g.CreateRelease(version.String()); err != nil {
 			return err
 		}
 
