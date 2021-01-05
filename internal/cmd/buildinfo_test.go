@@ -20,9 +20,9 @@ func TestBuildInfo(t *testing.T) {
 			"ok",
 			"1.0.0",
 			"4a8804f18ea7560fe45fecaa052605b1a8a66fe8",
-			"2021-01-05T08:08:54+01:00",
+			"2021-01-05T08:08:54+00:00",
 			`prog, version 1.0.0 (revision: 4a8804f1)
-  build date:       2021-01-05 08:08:54 +0100 CET
+  build date:       2021-01-05 08:08:54 +0000 UTC
   go version:       go1.15.6`,
 			false,
 		},

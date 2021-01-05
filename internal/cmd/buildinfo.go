@@ -61,7 +61,7 @@ func (b BuildInfo) Version(program string) string {
 		Program   string
 	}{
 		Version:   b.version,
-		Date:      b.date.String(),
+		Date:      b.date.In(time.UTC).String(),
 		Commit:    b.commit[:8],
 		GoVersion: b.runtimeVersion(),
 		Program:   program,
