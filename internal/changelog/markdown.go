@@ -132,7 +132,7 @@ func (c Changelog) issueURL(issueNumber int) string {
 		issuesPath = githubIssuesPath
 	)
 
-	url := path.Join(githubURL, c.cfg.GithubProjectPath, issuesPath) + "/"
+	url := githubURL + path.Join("/", c.cfg.GithubProjectPath, issuesPath) + "/"
 	issue := fmt.Sprintf("#%d", issueNumber)
 
 	s.WriteRune('[')
@@ -156,14 +156,14 @@ func (c Changelog) revisionURL(revision string) string {
 		commitPath = githubCommitPath
 	)
 
-	url := path.Join(githubURL, c.cfg.GithubProjectPath, commitPath) + "/"
+	url := githubURL + path.Join("/", c.cfg.GithubProjectPath, commitPath) + "/"
 
 	s.WriteRune('[')
 	s.WriteString(revision[:8])
 	s.WriteRune(']')
 	s.WriteRune('(')
 	s.WriteString(url)
-	s.WriteString(revision)
+	s.WriteString(revision[:8])
 	s.WriteRune(')')
 
 	return s.String()
