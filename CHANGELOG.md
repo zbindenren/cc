@@ -3,11 +3,11 @@
 
 ### Bug Fixes
 
-* **changelog**: add `BREAKING CHANGE` footer token value to changelog ([2e070cd5](https:/github.com/zbindenren/cc/commit/2e070cd57387b57b5c98656801d2e5595d7834fd))
+* **changelog**: add `BREAKING CHANGE` footer token value to changelog ([2e070cd5](https://github.com/zbindenren/cc/commit/2e070cd5))
   > Before this change, footer token values for `BREAKING CHANGE` and
   > `BREAKING_CHANGE` were ignored.
-* **changelog**: version is no longer prefixed with `v` for `-history` flag ([4a8804f1](https:/github.com/zbindenren/cc/commit/4a8804f18ea7560fe45fecaa052605b1a8a66fe8))
-* **common**: documentation for BreakingMessage() method. ([9cd0522e](https:/github.com/zbindenren/cc/commit/9cd0522e7067d9145a84db05dc9346602c396208))
+* **changelog**: version is no longer prefixed with `v` for `-history` flag ([4a8804f1](https://github.com/zbindenren/cc/commit/4a8804f1))
+* **common**: documentation for BreakingMessage() method. ([9cd0522e](https://github.com/zbindenren/cc/commit/9cd0522e))
 
 
 
@@ -16,17 +16,17 @@
 
 ### Bug Fixes
 
-* **changelog**: raise no error when output is set to stdout and `CHANGELOG.md` does not exist ([ba54c827](https:/github.com/zbindenren/cc/commit/ba54c827d89676615c76700ddd6912fdd54e4c7c))
-* **changelog**: stage changelog file if necessary ([0bdd1106](https:/github.com/zbindenren/cc/commit/0bdd11060bcd34ecf1678af86c55f8ba95e63c38))
-* **changelog**: typo in error message ([30cc4d88](https:/github.com/zbindenren/cc/commit/30cc4d88cd548532866fa0331394201058080888))
-* **changelog**: when overriding release version created tag was not overridden ([e185c32b](https:/github.com/zbindenren/cc/commit/e185c32bf61a0839b9bf044b4dc4cec4e0b878c2))
+* **changelog**: raise no error when output is set to stdout and `CHANGELOG.md` does not exist ([ba54c827](https://github.com/zbindenren/cc/commit/ba54c827))
+* **changelog**: stage changelog file if necessary ([0bdd1106](https://github.com/zbindenren/cc/commit/0bdd1106))
+* **changelog**: typo in error message ([30cc4d88](https://github.com/zbindenren/cc/commit/30cc4d88))
+* **changelog**: when overriding release version created tag was not overridden ([e185c32b](https://github.com/zbindenren/cc/commit/e185c32b))
 
 
 ### New Features
 
-* **changelog**: add github markdown support ([a1f6009e](https:/github.com/zbindenren/cc/commit/a1f6009ea70b23b6c2605c116139b15cd7194c81))
-* **common**: add `config.Read` method to unmarshal config from `io.Reader` ([aecbc18b](https:/github.com/zbindenren/cc/commit/aecbc18b6173bf5b1fb1da321fb20af9720c759d))
-* **common**: add command to create a markdown changelog file ([b874c814](https:/github.com/zbindenren/cc/commit/b874c814d95f76a77e7ff7de45426bd1c3a3db46))
+* **changelog**: add github markdown support ([a1f6009e](https://github.com/zbindenren/cc/commit/a1f6009e))
+* **common**: add `config.Read` method to unmarshal config from `io.Reader` ([aecbc18b](https://github.com/zbindenren/cc/commit/aecbc18b))
+* **common**: add command to create a markdown changelog file ([b874c814](https://github.com/zbindenren/cc/commit/b874c814))
 
 
 
