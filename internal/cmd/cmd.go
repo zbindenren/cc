@@ -29,6 +29,7 @@ const (
 	initDfltConfigOptName = "init-config"
 	noPromptOptName       = "n"
 	versionOptName        = "v"
+	numOptName            = "num"
 
 	dfltChangelogFile = "CHANGELOG.md"
 	dateFormat        = "2006-01-02"
@@ -49,6 +50,7 @@ type Command struct {
 	initConfig *bool
 	noPrompt   *bool
 	version    *bool
+	num        *int
 }
 
 // New creates a new Command.
@@ -67,6 +69,7 @@ func New(b BuildInfo) *Command {
 		initConfig: fs.Bool(initDfltConfigOptName, false, fmt.Sprintf("initialize a default changelog configuration '%s'", config.FileName)),
 		noPrompt:   fs.Bool(noPromptOptName, false, "do not prompt for next version"),
 		version:    fs.Bool(versionOptName, false, "show program version information"),
+		num:        fs.Int(numOptName, 0, fmt.Sprintf("in combination with -%s: the number of tags to go back", historyOptName)),
 	}
 }
 
@@ -175,8 +178,16 @@ func (c Command) createChangelog(g *git.Command, cfg config.Changelog, l *flash.
 }
 
 func (c Command) validate() error {
-	if c.sinceTag != nil && *c.sinceTag != "" && !*c.history {
+	if *c.sinceTag != "" && !*c.history {
 		return fmt.Errorf("'-%s' option is only allowed in combination '-%s' option", sinceTagOptName, historyOptName)
+	}
+
+	if *c.num > 0 && !*c.history {
+		return fmt.Errorf("'-%s' option is only allowed in combination '-%s' option", numOptName, historyOptName)
+	}
+
+	if *c.num > 0 && *c.sinceTag != "" {
+		return fmt.Errorf("'-%s' and '-%s' are mutually exclusive", numOptName, sinceTagOptName)
 	}
 
 	return nil

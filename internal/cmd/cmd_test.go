@@ -137,6 +137,8 @@ func setup(t *testing.T, repoName string) (c Command, changelogPath string, clea
 		toStdOut:   newBoolPtr(false),
 		file:       newStrPtr(filepath.Join(tmp, repoName, dfltChangelogFile)),
 		version:    newBoolPtr(false),
+		num:        newIntPtr(0),
+		sinceTag:   newStrPtr(""),
 	}
 
 	cleanup = func() {
@@ -152,6 +154,10 @@ func setup(t *testing.T, repoName string) (c Command, changelogPath string, clea
 
 func newBoolPtr(b bool) *bool {
 	return &b
+}
+
+func newIntPtr(i int) *int {
+	return &i
 }
 
 func newStrPtr(s string) *string {

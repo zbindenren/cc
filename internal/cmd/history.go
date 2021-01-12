@@ -17,6 +17,10 @@ func (c Command) runHistory(dst io.Writer, l *flash.Logger, cfg config.Changelog
 
 	max := len(tags) - 1
 
+	if *c.num > 0 && *c.num <= max {
+		max = *c.num - 1
+	}
+
 	if *c.sinceTag != "" {
 		max = tags.Index(*c.sinceTag)
 
