@@ -17,7 +17,7 @@ builds:
       env:
         - CGO_ENABLED=0
 dockers:
-    - binaries:
+    - ids:
         - changelog
       goos: linux
       goarch: amd64
