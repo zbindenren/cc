@@ -12,7 +12,7 @@ builds:
         - windows
       goarch:
         - amd64
-      main: cmd/main.go
+      main: cmd/changelog/main.go
       binary: changelog
       env:
         - CGO_ENABLED=0
