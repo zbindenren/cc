@@ -30,7 +30,7 @@ jobs:
 
   goreleaser:
     runs-on: ubuntu-latest
-    # if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v')
     needs:
     - lint
     - test
