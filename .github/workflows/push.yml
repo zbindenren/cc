@@ -56,11 +56,11 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Docker Push
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: |
-          docker tag zbindenren/cc:0.3.1 zbindenren/cc:latest
-          docker push zbindenren/cc:latest
+#      - name: Docker Push
+#        if: ${{ github.ref == 'refs/heads/main' }}
+#        run: |
+#          docker tag zbindenren/cc:0.3.1 zbindenren/cc:latest
+#          docker push zbindenren/cc:latest
       - name: Upload assets
         uses: actions/upload-artifact@v2
         with:
