@@ -16,6 +16,7 @@ func (c Command) runHistory(dst io.Writer, l *flash.Logger, cfg config.Changelog
 	}
 
 	max := len(tags) - 1
+
 	if *c.sinceTag != "" {
 		max = tags.Index(*c.sinceTag)
 
@@ -24,8 +25,16 @@ func (c Command) runHistory(dst io.Writer, l *flash.Logger, cfg config.Changelog
 		}
 	}
 
-	for i := 0; i < max; i++ {
-		revs, err := g.RevList(tags[i+1], tags[i])
+	for i := 0; i <= max; i++ {
+		var start string
+
+		end := tags[i]
+
+		if i+1 < len(tags) {
+			start = tags[i+1]
+		}
+
+		revs, err := g.RevList(start, end)
 		if err != nil {
 			return err
 		}
