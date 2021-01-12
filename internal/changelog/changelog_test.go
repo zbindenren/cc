@@ -92,7 +92,7 @@ func TestWrite(t *testing.T) {
     breaking change
 * **router**
   * **[00000008](https://github.com/zbindenren/cc/commit/00000008)**:
-    add a breaking change ([#12345](https://github.com/zbindenren/cc/issues/#12345))
+    add a breaking change ([#12345](https://github.com/zbindenren/cc/issues/12345))
     > this is the body of the breaking change
     > breaks all
   * **[00000007](https://github.com/zbindenren/cc/commit/00000007)**:
@@ -104,7 +104,7 @@ func TestWrite(t *testing.T) {
 * **common**: a fix ([00000001](https://github.com/zbindenren/cc/commit/00000001))
   > this is the body
 * **common**: fixed this ([00000002](https://github.com/zbindenren/cc/commit/00000002))
-* **router**: another fix ([#1](https://github.com/zbindenren/cc/issues/#1), [00000003](https://github.com/zbindenren/cc/commit/00000003))
+* **router**: another fix ([#1](https://github.com/zbindenren/cc/issues/1), [00000003](https://github.com/zbindenren/cc/commit/00000003))
 
 
 ### New Features
