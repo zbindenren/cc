@@ -1,3 +1,14 @@
+## 0.3.1 (2021-01-12)
+
+
+### Bug Fixes
+
+* **changelog**: command does not fail when there was no commit since last tag ([#1](https://github.com/zbindenren/cc/issues/#1), [adbe8e1a](https://github.com/zbindenren/cc/commit/adbe8e1a))
+  > Release failed with a cryptic git error, when there was no commit since last
+  > tag. Now command exits with `no commits since last tag` error message.
+
+
+
 ## 0.3.0 (2021-01-05)
 
 
