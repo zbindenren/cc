@@ -133,9 +133,10 @@ func (c Changelog) issueURL(issueNumber int) string {
 	)
 
 	url := githubURL + path.Join("/", c.cfg.GithubProjectPath, issuesPath) + "/"
-	issue := fmt.Sprintf("#%d", issueNumber)
+	issue := fmt.Sprintf("%d", issueNumber)
 
 	s.WriteRune('[')
+	s.WriteRune('#')
 	s.WriteString(issue)
 	s.WriteRune(']')
 	s.WriteRune('(')
