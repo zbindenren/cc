@@ -109,12 +109,18 @@ func (c Command) RevList(start, end string) ([]string, error) {
 		arg = start + ".." + end
 	}
 
-	refs, err := c.Run("rev-list", arg)
+	revs, err := c.Run("rev-list", arg)
 	if err != nil {
 		return nil, err
 	}
 
-	return strings.Split(strings.TrimSpace(refs), "\n"), nil
+	revs = strings.TrimSpace(revs)
+
+	if revs == "" {
+		return []string{}, nil
+	}
+
+	return strings.Split(strings.TrimSpace(revs), "\n"), nil
 }
 
 // CreateRelease creates a release tag.

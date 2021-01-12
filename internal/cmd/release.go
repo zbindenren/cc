@@ -42,6 +42,10 @@ func (c Command) runRelease(dst io.Writer, l *flash.Logger, cfg config.Changelog
 		return err
 	}
 
+	if len(revs) == 0 {
+		return errors.New("no commits since last tag")
+	}
+
 	cw, err := c.createChangelog(g, cfg, l, revs)
 	if err != nil {
 		return err
