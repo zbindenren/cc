@@ -16,6 +16,23 @@ builds:
       binary: changelog
       env:
         - CGO_ENABLED=0
+dockers:
+    - binaries:
+        - changelog
+      goos: linux
+      goarch: amd64
+      dockerfile: packaging/docker/Dockerfile
+      image_templates:
+        - 'zbindenren/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}'
+        - 'zbindenren/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}'
+        - 'zbindenren/{{ .ProjectName }}:{{ .Major }}'
+        - 'zbindenren/{{ .ProjectName }}:latest'
+      build_flag_templates:
+        - --label=org.opencontainers.image.version={{ .Version }}
+        - --label=org.opencontainers.image.url=https://github.com/zbindenren/cc
+        - --label=org.opencontainers.image.source=https://github.com/zbindenren/cc
+        - --label=org.opencontainers.image.revision={{ .ShortCommit }}
+        - --label=org.opencontainers.image.created={{ .Date }}
 checksum:
     name_template: checksums.txt
 before:

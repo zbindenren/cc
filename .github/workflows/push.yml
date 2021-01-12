@@ -30,13 +30,12 @@ jobs:
 
   goreleaser:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
+    # if: startsWith(github.ref, 'refs/tags/v')
     needs:
     - lint
     - test
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -44,6 +43,12 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.15
+      - name: Login to Docker Registry
+        env:
+          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+        run: |
+          echo "${{ secrets.DOCKER_TOKEN }}" | \
+          docker login -u zbindenren --password-stdin
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
         with:
@@ -51,6 +56,11 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Docker Push
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: |
+          docker tag zbindenren/cc:0.3.1 zbindenren/cc:latest
+          docker push zbindenren/cc:latest
       - name: Upload assets
         uses: actions/upload-artifact@v2
         with:
