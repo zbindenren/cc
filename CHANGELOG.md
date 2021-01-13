@@ -1,3 +1,23 @@
+## 0.4.0 (2021-01-13)
+
+
+### Bug Fixes
+
+* **changelog**: include first release (tag) to history ([f37a1f1d](https://github.com/zbindenren/cc/commit/f37a1f1d))
+* **changelog**: issue link URL in github markdown ([4df9cbb8](https://github.com/zbindenren/cc/commit/4df9cbb8))
+  > Before this fix, the issue link pointed incorrectly to `https://github.com/org/project/issues/#<issueNR>`.
+  > Now the URL points to `https://github.com/org/project/issues/<issueNR>`
+  > (without '#').
+
+
+### New Features
+
+* **changelog**: add `-num` option ([638ea456](https://github.com/zbindenren/cc/commit/638ea456))
+  > With this option, it is possible to limit the number of releases (tags)
+  > that are included in history output.
+
+
+
 ## 0.3.1 (2021-01-12)
 
 
