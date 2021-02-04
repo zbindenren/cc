@@ -99,6 +99,15 @@ func (c Command) Run() error {
 		return err
 	}
 
+	toplevelDir, err := gitCmd.TopLevelDir()
+	if err != nil {
+		return err
+	}
+
+	// resolv changelog file path
+	absChangelogPath := filepath.Join(toplevelDir, *c.file)
+	c.file = &absChangelogPath
+
 	gitCmd.Noop = c.noop
 
 	if err := c.validate(); err != nil {

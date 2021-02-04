@@ -135,7 +135,7 @@ func setup(t *testing.T, repoName string) (c Command, changelogPath string, clea
 		history:    newBoolPtr(false),
 		noPrompt:   newBoolPtr(true),
 		toStdOut:   newBoolPtr(false),
-		file:       newStrPtr(filepath.Join(tmp, repoName, dfltChangelogFile)),
+		file:       newStrPtr(dfltChangelogFile),
 		version:    newBoolPtr(false),
 		num:        newIntPtr(0),
 		sinceTag:   newStrPtr(""),

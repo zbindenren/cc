@@ -199,6 +199,16 @@ func (c Command) HasTags() (bool, error) {
 	return strings.TrimSpace(out) != "", nil
 }
 
+// TopLevelDir returns the git top level directory.
+func (c Command) TopLevelDir() (string, error) {
+	topLevelDir, err := c.Run("rev-parse", "--show-toplevel")
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimSpace(topLevelDir), nil
+}
+
 // CommitFor creates a Commit for a revision.
 func (c Command) CommitFor(revision string) (*Commit, error) {
 	m, err := c.Run("show", "--format=%B", "-s", revision)
