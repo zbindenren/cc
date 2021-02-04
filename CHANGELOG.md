@@ -1,3 +1,13 @@
+## 0.4.2 (2021-02-04)
+
+
+### Bug Fixes
+
+* **common**: add a dummy date ([3ee769bd](https://github.com/zbindenren/cc/commit/3ee769bd))
+  > cmd.NewBuildInfo returns an error if the date is empty and aborts the program. This is the case for users installing the binary with .
+
+
+
 ## 0.4.1 (2021-02-04)
 
 
