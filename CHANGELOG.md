@@ -1,3 +1,12 @@
+## 0.4.1 (2021-02-04)
+
+
+### Bug Fixes
+
+* **changelog**: create changelog file in the top level git directory instead of current directory ([#2](https://github.com/zbindenren/cc/issues/2), [ccfe76e1](https://github.com/zbindenren/cc/commit/ccfe76e1))
+
+
+
 ## 0.4.0 (2021-01-13)
 
 
