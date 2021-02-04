@@ -1,3 +1,12 @@
+## 0.4.3 (2021-02-04)
+
+
+### Bug Fixes
+
+* **changelog**: make default date in main.go parsable ([a0d386bc](https://github.com/zbindenren/cc/commit/a0d386bc))
+
+
+
 ## 0.4.2 (2021-02-04)
 
 
