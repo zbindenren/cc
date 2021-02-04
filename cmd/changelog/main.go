@@ -11,7 +11,7 @@ import (
 var (
 	version = "dev"
 	commit  = "12345678"
-	date    = "2020-09-22T11:11:10+02:00"
+	date    = "2009-11-10T23:00:00Z"
 )
 
 func main() {
