@@ -59,13 +59,13 @@ func (c Command) runInit(dst io.Writer, l *flash.Logger, cfg config.Changelog, g
 
 		l.Debug("committing changes")
 
-		if err := g.CommitFile(*c.file, fmt.Sprintf("chore: update changelog with %s release", next.String())); err != nil {
+		if err := g.CommitFile(*c.file, fmt.Sprintf("chore: update changelog with %s release", version.String())); err != nil {
 			return err
 		}
 
-		l.Debugw("create release tag", "release", "v"+next.String())
+		l.Debugw("create release tag", "release", "v"+version.String())
 
-		if err := g.CreateRelease(next.String()); err != nil {
+		if err := g.CreateRelease(version.String()); err != nil {
 			return err
 		}
 
