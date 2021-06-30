@@ -4,6 +4,7 @@
 
 - [cc](#cc)
   - [Changelog CLI](#changelog-cli)
+    - [Installation](#installation)
     - [Configuration](#configuration)
     - [Usage](#usage)
     - [Markdown](#markdown)
@@ -21,6 +22,14 @@ A small go library to parse [conventional commits](https://www.conventionalcommi
 
 ## Changelog CLI
 The changelog cli creates and updates [CHANGELOG.md](./CHANGELOG.md) markdown files.
+
+### Installation
+You can download a precompiled binary from the releases page or install it with go:
+
+```console
+$ go install github.com/zbindenren/cc/cmd/changelog@latest
+```
+
 
 ### Configuration
 You can create a default changelog configuration `.cc.yml` with `changelog -init-config`. This results in the following configuration:
