@@ -90,10 +90,15 @@ func (c Command) HasUncommitted() (bool, error) {
 	return strings.TrimSpace(out) != "", nil
 }
 
-// HasRemotes checks if a remote is configured.
+// HasRemotes checks if an origin remote is configured.
 func (c Command) HasRemotes() bool {
-	_, err := c.Run("ls-remote", "--exit-code")
-	return err == nil
+	out, err := c.Run("remote")
+
+	if err != nil {
+		return false
+	}
+
+	return strings.Contains(out, "origin")
 }
 
 // IsStaged checks if a path is staged in repository.
