@@ -1,0 +1,19 @@
+name: conventional commits
+on: [push, pull_request]
+
+jobs:
+  conventional-commits:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: giantswarm/install-binary-action@v1.0.0
+      with:
+        binary: "changelog"
+        version: "0.4.3"
+        download_url: "https://github.com/zbindenren/cc/releases/download/v${version}/cc_${version}_linux_amd64.tar.gz"
+        tarball_binary_path: "${binary}"
+        smoke_test: "${binary} -v"
+    - name: Verify conventional commits
+      run: |
+        echo "need more information about conventional commits: https://www.conventionalcommits.org"
+        changelog -stdout -n
