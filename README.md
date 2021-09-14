@@ -8,6 +8,7 @@
     - [Configuration](#configuration)
     - [Usage](#usage)
     - [Markdown](#markdown)
+    - [Github Actions](#github-actions)
   - [Library](#library)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -154,6 +155,11 @@ you get the following markdown:
 ```
 
 An example can be found [here](./CHANGELOG.md).
+
+### Github Actions
+
+Here is an example how you can use the `changlog` tool to verify conventional commits in a github action:  [conventional-commits.yml](.github/workflows/conventional-commits.yml)
+
 
 ## Library
 Instead of regular expressions, this package uses a lexer, that functions similarly to Rob Pike's discussion about lexer
