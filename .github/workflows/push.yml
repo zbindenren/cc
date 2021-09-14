@@ -12,7 +12,7 @@ jobs:
         version: "0.4.3"
         download_url: "https://github.com/zbindenren/cc/releases/download/v${version}/cc_${version}_linux_amd64.tar.gz"
         tarball_binary_path: "${binary}"
-        smoke_test: "${binary} --version"
+        smoke_test: "${binary} -v"
 
   lint:
     runs-on: ubuntu-latest
