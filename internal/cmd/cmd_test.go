@@ -28,7 +28,7 @@ func TestInit(t *testing.T) {
 	err := c.Run()
 	require.NoError(t, err)
 
-	b, err := ioutil.ReadFile(changlogPath) // nolint: gosec
+	b, err := os.ReadFile(changlogPath) // nolint: gosec
 	require.NoError(t, err)
 
 	expectedFmt := `## 0.1.0 (%s)
@@ -66,7 +66,7 @@ func TestRelease(t *testing.T) {
 	err := c.Run()
 	require.NoError(t, err)
 
-	b, err := ioutil.ReadFile(changlogPath) // nolint: gosec
+	b, err := os.ReadFile(changlogPath) // nolint: gosec
 	require.NoError(t, err)
 
 	expectedFmt := `## 0.2.0 (%s)

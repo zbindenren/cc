@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"time"
 
@@ -79,7 +78,7 @@ func (c Command) runRelease(dst io.Writer, l *flash.Logger, cfg config.Changelog
 
 	title := fmt.Sprintf("%s (%s)", version, time.Now().Format(dateFormat))
 
-	old, err := ioutil.ReadFile(*c.file)
+	old, err := os.ReadFile(*c.file)
 	if err != nil && !*c.toStdOut {
 		return err
 	}

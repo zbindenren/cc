@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"sort"
@@ -114,7 +113,7 @@ func Load(dir string) (*Changelog, error) {
 
 // Read unmarshals config.Changelog from a io.Reader.
 func Read(r io.Reader) (*Changelog, error) {
-	b, err := ioutil.ReadAll(r) // nolint: gosec
+	b, err := io.ReadAll(r)
 	if err != nil {
 		return nil, err
 	}
@@ -137,7 +136,7 @@ func Write(dir string, c Changelog) error {
 		return err
 	}
 
-	if err := ioutil.WriteFile(p, b, 0600); err != nil {
+	if err := os.WriteFile(p, b, 0o600); err != nil {
 		return fmt.Errorf("failed to write file %s: %w", p, err)
 	}
 

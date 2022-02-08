@@ -2,7 +2,8 @@ package changelog
 
 import (
 	"bytes"
-	"io/ioutil"
+	"os"
+	"path/filepath"
 	"runtime"
 	"strings"
 	"testing"
@@ -178,7 +179,7 @@ type message struct {
 func messagesFrom(t *testing.T, filePath string) []message {
 	m := []message{}
 
-	d, err := ioutil.ReadFile(filePath) // nolint: gosec
+	d, err := os.ReadFile(filepath.Clean(filePath))
 	require.NoError(t, err)
 
 	err = yaml.Unmarshal(d, &m)

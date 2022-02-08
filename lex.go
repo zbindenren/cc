@@ -289,7 +289,8 @@ func peekString(l *lexer.L, count int) string {
 		}
 
 		s += string(l.Next())
-		defer l.Rewind()
+
+		defer l.Rewind() //nolint: gocritic
 	}
 
 	return s

@@ -136,7 +136,7 @@ func (c Command) Run() error {
 	var dst io.Writer = os.Stdout
 
 	if !*c.toStdOut {
-		f, err := os.OpenFile(*c.file, os.O_CREATE|os.O_RDWR, 0600)
+		f, err := os.OpenFile(*c.file, os.O_CREATE|os.O_RDWR, 0o600)
 		if err != nil {
 			return err
 		}

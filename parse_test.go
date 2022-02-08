@@ -3,7 +3,7 @@ package cc
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -27,7 +27,7 @@ func TestParse(t *testing.T) {
 	}
 
 	allTests := tests{}
-	d, err := ioutil.ReadFile("tests.yaml")
+	d, err := os.ReadFile("tests.yaml")
 	require.NoError(t, err)
 
 	err = yaml.Unmarshal(d, &allTests)
