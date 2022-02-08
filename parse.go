@@ -18,6 +18,7 @@
 package cc
 
 import (
+	"bytes"
 	"strings"
 
 	"github.com/bbuck/go-lexer"
@@ -63,7 +64,7 @@ func (c Commit) BreakingMessage() string {
 
 // Parse parses the conventional commit. If it fails, an error is returned.
 func Parse(s string) (*Commit, error) {
-	l := lexer.New(strings.TrimSpace(s), typeState)
+	l := lexer.New(normalizeNewlines(strings.TrimSpace(s)), typeState)
 	l.ErrorHandler = func(string) {}
 
 	l.Start()
@@ -117,4 +118,14 @@ func (f Footers) breakingMessage() string {
 	}
 
 	return ""
+}
+
+func normalizeNewlines(s string) string {
+	d := []byte(s)
+	// replace CR LF \r\n (windows) with LF \n (unix)
+	d = bytes.ReplaceAll(d, []byte{13, 10}, []byte{10})
+	// replace CF \r (mac) with LF \n (unix)
+	d = bytes.ReplaceAll(d, []byte{13}, []byte{10})
+
+	return string(d)
 }
