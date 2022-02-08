@@ -1,3 +1,28 @@
+## 0.4.4 (2022-02-08)
+
+
+### Bug Fixes
+
+* **changelog**: use `git remote` to check if repo has an `origin` remote configured ([1a3be0a4](https://github.com/zbindenren/cc/commit/1a3be0a4))
+* **common**: overwrite tag correctly for initial release ([#5](https://github.com/zbindenren/cc/issues/5), [1cbb1f23](https://github.com/zbindenren/cc/commit/1cbb1f23))
+* **common**: replaces `\r\n` (windows) and `\r` mac with `\n` ([92f82819](https://github.com/zbindenren/cc/commit/92f82819))
+  > Dependabot uses `\r\n` as newlines in commit messages. Now parsing
+  > of Dependabot commit messages is possible too.
+
+
+### Build System
+
+* **common**: add conventional commits workflow ([6838c63e](https://github.com/zbindenren/cc/commit/6838c63e))
+
+
+### Dependencies
+
+* **flash**: 0.1.0 -> 0.2.0 ([58baaf01](https://github.com/zbindenren/cc/commit/58baaf01))
+* **testify**: 1.6.1 -> 1.7.0 ([b4815ff6](https://github.com/zbindenren/cc/commit/b4815ff6))
+* **yaml**: 3.0.0-20200615113413-eeeca48fe776 -> 3.0.0-20210107192922-496545a6307b ([8883cdb6](https://github.com/zbindenren/cc/commit/8883cdb6))
+
+
+
 ## 0.4.3 (2021-02-04)
 
 
