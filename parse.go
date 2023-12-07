@@ -127,5 +127,19 @@ func normalizeNewlines(s string) string {
 	// replace CF \r (mac) with LF \n (unix)
 	d = bytes.ReplaceAll(d, []byte{13}, []byte{10})
 
-	return string(d)
+	return ensureEmptyLineBeforeToken(string(d))
+}
+
+func ensureEmptyLineBeforeToken(s string) string {
+	re := regexp.MustCompile(`^(\w+:\s*)`)
+
+	lines := strings.Split(s, "\n")
+
+	for i, line := range lines {
+		if matches := re.FindStringSubmatch(line); len(matches) > 0 {
+			lines[i] = re.ReplaceAllString(line, "\n$1")
+		}
+	}
+
+	return strings.Join(lines, "\n")
 }
