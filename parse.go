@@ -20,6 +20,7 @@ package cc
 import (
 	"bytes"
 	"strings"
+	"regexp"
 
 	"github.com/bbuck/go-lexer"
 )
